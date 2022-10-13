@@ -17,6 +17,8 @@ import Settings from "@/views/admin/Settings.vue"
 import Tables from "@/views/admin/Tables.vue"
 import Maps from "@/views/admin/Maps.vue"
 
+import stores from "./stores"
+
 // routes
 const routes = [
   {
@@ -50,4 +52,4 @@ const router = createRouter({
   routes,
 })
 
-createApp(App).use(router).mount("#app")
+createApp(App).use(stores).use(router).mount("#app")
