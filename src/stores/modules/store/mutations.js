@@ -1,18 +1,9 @@
 export default {
-  // GET INITIAL LOCATION
-  SET_USER_LOCATION({ maps }, { latitude, longitude, address }) {
-    maps.address = address
-    maps.userLocation = {
-      latitude,
-      longitude,
-    }
+  SET_STORE_MUTATIONS(state, { field, value }) {
+    state[field] = value
   },
 
-  // GET ACTIVE LOCATION
-  SET_ACTIVE_LOCATION({ maps }, { latitude, longitude }) {
-    maps.activeLocation = {
-      latitude,
-      longitude,
-    }
+  ADD_STORE_ERRORS(state, { error }) {
+    state.error.push(error)
   },
 }
