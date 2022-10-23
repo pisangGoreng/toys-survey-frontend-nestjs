@@ -3,6 +3,7 @@
     <!-- <Spinner :isShow="storeGetters.isLoading" /> -->
 
     <div class="overflow-auto bg-emerald-500 w-full" id="app">
+      {{ storeOptions }}
       <Options label="Store" tag="selectedStore" :options="storeOptions" />
       <div class="h-5 w-full bg-red-300" />
       <Options

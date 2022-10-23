@@ -24,7 +24,7 @@ import stores from "./stores"
 // routes
 const routes = [
   {
-    path: "/admin",
+    path: "/",
     redirect: "/admin/dashboard",
     component: Admin,
     children: [
