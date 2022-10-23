@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap h-full">
-    <Spinner :isShow="storeGetters.isLoading" />
-    {{ storeGetters.isLoading }}
+    <!-- <Spinner :isShow="storeGetters.isLoading" /> -->
+
     <div class="overflow-auto bg-emerald-500 w-full" id="app">
       <Options label="Store" tag="selectedStore" :options="storeOptions" />
       <div class="h-5 w-full bg-red-300" />
@@ -41,6 +41,9 @@
           </p>
           <p class="text-xl font-medium text-gray-700">
             Rating transaksi: {{ ratingTransaction }}
+          </p>
+          <p class="text-xl font-medium text-gray-700">
+            Loading: {{ storeGetters.isLoading }}
           </p>
         </div>
       </div>
@@ -98,14 +101,14 @@
 </template>
 <script>
 import Options from "@/components/Options/Options.vue"
-import Spinner from "@/components/Spinner/Spinner.vue"
+// import Spinner from "@/components/Spinner/Spinner.vue"
 import { mapActions } from "vuex"
 
 export default {
   name: "dashboard-page",
   components: {
     Options,
-    Spinner,
+    // Spinner,
   },
   data() {
     return {
