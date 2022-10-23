@@ -12,12 +12,11 @@ export default {
         )
         .then((res) => {
           const response = res.data
+          console.log(response)
           commit("SET_STORE_MUTATIONS", {
             field: "storesDetails",
             value: response,
           })
-          commit("SET_STORE_MUTATIONS", { field: "isLoading", value: false })
-
           resolve(response)
         })
         .catch((err) => {
@@ -27,5 +26,36 @@ export default {
           reject(err)
         })
     })
+  },
+
+  SET_RATING_ACTION({ commit }, { field, value }) {
+    // console.log(
+    //   "🚀 ~ file: actions.js ~ line 32 ~ SET_RATING_ACTION ~ value",
+    //   value,
+    //   field
+    // )
+
+    if (field === "selectedStore") {
+      commit("SET_RATING_MUTATIONS", {
+        field: "selectedStore",
+        value,
+      })
+      commit("SET_RATING_MUTATIONS", { field: "selectedEmployee", value: null })
+      commit("SET_RATING_MUTATIONS", { field: "ratingValue", value: null })
+    }
+
+    if (field === "selectedEmployee") {
+      commit("SET_RATING_MUTATIONS", {
+        field: "selectedEmployee",
+        value,
+      })
+    }
+
+    if (field === "ratingValue") {
+      commit("SET_RATING_MUTATIONS", {
+        field: "ratingValue",
+        value,
+      })
+    }
   },
 }

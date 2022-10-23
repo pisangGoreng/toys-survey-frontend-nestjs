@@ -6,10 +6,12 @@ export default {
     isLoading: false,
     isError: false,
     error: [],
-    storesDetails: [],
+    selectedEmployee: null,
+    selectedStore: null,
+    ratingValue: null,
   }),
   getters: {
-    storeGetters: (state) => {
+    ratingGetters: (state) => {
       return () => {
         return {
           ...state,
