@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a
+    <!-- <a
       class="text-blueGray-500 block py-1 px-3"
       ref="btnDropdownRef"
       v-on:click="toggleDropdown($event)"
@@ -40,30 +40,30 @@
       >
         Seprated link
       </a>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
-import { createPopper } from "@popperjs/core";
+import { createPopper } from "@popperjs/core"
 
 export default {
   data() {
     return {
       dropdownPopoverShow: false,
-    };
+    }
   },
   methods: {
     toggleDropdown: function (event) {
-      event.preventDefault();
+      event.preventDefault()
       if (this.dropdownPopoverShow) {
-        this.dropdownPopoverShow = false;
+        this.dropdownPopoverShow = false
       } else {
-        this.dropdownPopoverShow = true;
+        this.dropdownPopoverShow = true
         createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
           placement: "bottom-start",
-        });
+        })
       }
     },
   },
-};
+}
 </script>

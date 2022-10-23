@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a
+    <!-- <a
       class="text-blueGray-500 block"
       href="#pablo"
       ref="btnDropdownRef"
@@ -51,34 +51,34 @@
       >
         Seprated link
       </a>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import { createPopper } from "@popperjs/core";
+import { createPopper } from "@popperjs/core"
 
-import image from "@/assets/img/team-1-800x800.jpg";
+import image from "@/assets/img/team-1-800x800.jpg"
 
 export default {
   data() {
     return {
       dropdownPopoverShow: false,
       image: image,
-    };
+    }
   },
   methods: {
     toggleDropdown: function (event) {
-      event.preventDefault();
+      event.preventDefault()
       if (this.dropdownPopoverShow) {
-        this.dropdownPopoverShow = false;
+        this.dropdownPopoverShow = false
       } else {
-        this.dropdownPopoverShow = true;
+        this.dropdownPopoverShow = true
         createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
           placement: "bottom-start",
-        });
+        })
       }
     },
   },
-};
+}
 </script>
