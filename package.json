@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && gulp licenses",
+    "build": "vue-cli-service build --mode development && gulp licenses",
     "lint": "vue-cli-service lint",
     "start": "serve -p $PORT dist/",
     "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css",
