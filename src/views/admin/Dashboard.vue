@@ -209,6 +209,10 @@ export default {
       "SUBMIT_RATING_ACTION",
     ]),
     generateStoreOptions(storesDetails) {
+      console.log(
+        "🚀 ~ file: Dashboard.vue ~ line 212 ~ generateStoreOptions ~ storesDetails",
+        storesDetails
+      )
       return storesDetails.map((storeDetails) => {
         const { store, employee } = storeDetails
         return {
