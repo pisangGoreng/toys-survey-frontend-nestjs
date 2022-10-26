@@ -11,7 +11,7 @@ export default {
       return axios
 
         .get(
-          `https://toys-survey-frontend-nestjs-7ofpentacles-gmailcom.vercel.app/dev/users`
+          `https://0l89uhx5f4.execute-api.ap-southeast-1.amazonaws.com/dev/users`
         )
         .then((res) => {
           const response = res.data
