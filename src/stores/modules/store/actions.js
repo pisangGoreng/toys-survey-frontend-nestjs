@@ -13,7 +13,7 @@ export default {
         .get(`https://toys-survey-frontend-nestjs.vercel.app/dev/users`)
         .then((res) => {
           const response = res.data
-          console.log(res)
+          console.log(response)
           commit("SET_STORE_MUTATIONS", {
             field: "storesDetails",
             value: response,
