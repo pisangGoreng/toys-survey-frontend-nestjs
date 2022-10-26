@@ -10,11 +10,10 @@ export default {
       // `${corsAnywhere}/https://0l89uhx5f4.execute-api.ap-southeast-1.amazonaws.com/dev/users`
       return axios
 
-        .get(
-          `https://0l89uhx5f4.execute-api.ap-southeast-1.amazonaws.com/dev/users`
-        )
+        .get(`https://toys-survey-frontend-nestjs.vercel.app/dev/users`)
         .then((res) => {
           const response = res.data
+          console.log(res)
           commit("SET_STORE_MUTATIONS", {
             field: "storesDetails",
             value: response,
