@@ -6,12 +6,11 @@ export default {
       commit("SET_STORE_MUTATIONS", { field: "isLoading", value: true })
       commit("SET_STORE_MUTATIONS", { field: "isError", value: false })
 
-      let corsAnywhere = "https://corsanywhere.herokuapp.com"
-
+      // let corsAnywhere = "https://corsanywhere.herokuapp.com"
+      // `${corsAnywhere}/https://0l89uhx5f4.execute-api.ap-southeast-1.amazonaws.com/dev/users`
       return axios
-        .get(
-          `${corsAnywhere}/http://0l89uhx5f4.execute-api.ap-southeast-1.amazonaws.com/dev/users`
-        )
+
+        .get(`http://localhost:8080/dev/users`)
         .then((res) => {
           const response = res.data
           commit("SET_STORE_MUTATIONS", {

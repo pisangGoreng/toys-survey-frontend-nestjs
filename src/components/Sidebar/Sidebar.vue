@@ -183,7 +183,6 @@
 <script>
 import NotificationDropdown from "@/components/Dropdowns/NotificationDropdown.vue"
 import UserDropdown from "@/components/Dropdowns/UserDropdown.vue"
-import { mapActions } from "vuex"
 
 export default {
   data() {
@@ -192,15 +191,9 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["FETCH_STORE_ACTION"]),
     toggleCollapseShow: function (classes) {
       this.collapseShow = classes
     },
-  },
-  created() {
-    console.log(this.$store.state.store)
-
-    this.FETCH_STORE_ACTION()
   },
   components: {
     NotificationDropdown,

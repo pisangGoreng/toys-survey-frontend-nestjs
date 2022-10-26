@@ -89,13 +89,16 @@
         </button>
       </div>
 
-      <button
-        class="submit bg-red-500 text-white active:bg-red-600 font-bold uppercase text-base px-8 py-3 rounded shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-        type="button"
-        @click="setRating(1)"
-      >
-        Submit
-      </button>
+      <div class="flex justify-center items-center w-full bg-green-300 mt-5">
+        <button
+          class="items-stretch submit bg-red-500 text-white active:bg-red-600 font-bold uppercase text-base px-8 py-3 rounded shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+          @click="submitRating()"
+          :disabled="disableSubmit"
+        >
+          Submit
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -118,6 +121,9 @@ export default {
       isEmployeeOptionsDisabled: true,
       receiptNumber: "",
     }
+  },
+  created() {
+    this.FETCH_STORE_ACTION()
   },
   computed: {
     storeGetters() {
@@ -145,11 +151,10 @@ export default {
     },
     selectedSalesImage() {
       let imageUrl =
-        "https://drive.google.com/file/d/1sSdyeNeFzPjTNheP4ThZyEP-dYSKTI55/view?usp=sharing"
-      // if (this.ratingGetters.selectedEmployee !== null) {
-      // imageUrl = this.ratingGetters.selectedEmployee.details.image_url
-      // }
-      console.log("cek ", imageUrl.match(/[-\w]{25,}/)[0])
+        "https://drive.google.com/file/d/1y0pLEdhNJotxvN1AqzftGSoFKknTGZpI/view?usp=sharing"
+      if (this.ratingGetters.selectedEmployee !== null) {
+        imageUrl = this.ratingGetters.selectedEmployee.details.image_url
+      }
       return `https://drive.google.com/uc?id=${imageUrl.match(/[-\w]{25,}/)[0]}`
     },
     ratingTransaction() {
@@ -169,6 +174,9 @@ export default {
           break
       }
       return rating
+    },
+    disableSubmit() {
+      return false
     },
   },
   watch: {
@@ -195,7 +203,11 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["SET_RATING_ACTION"]),
+    ...mapActions([
+      "SET_RATING_ACTION",
+      "FETCH_STORE_ACTION",
+      "SUBMIT_RATING_ACTION",
+    ]),
     generateStoreOptions(storesDetails) {
       return storesDetails.map((storeDetails) => {
         const { store, employee } = storeDetails
@@ -226,6 +238,27 @@ export default {
     setRating(rating) {
       console.log(rating)
       this.SET_RATING_ACTION({ field: "ratingValue", value: rating })
+    },
+
+    submitRating() {
+      console.log("send data")
+      // this.SUBMIT_RATING_ACTION({
+      //   value: {
+      //     receipt_no: this.receiptNumber,
+      //     user_id: this.ratingGetters.selectedStore.value,
+      //     employee_id: this.ratingGetters.selectedEmployee.value,
+      //     rating: this.ratingGetters.ratingValue,
+      //   },
+      // })
+
+      this.SUBMIT_RATING_ACTION({
+        value: {
+          receipt_no: 123,
+          user_id: 1,
+          employee_id: 7,
+          rating: 1,
+        },
+      })
     },
   },
 }

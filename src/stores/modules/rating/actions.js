@@ -1,19 +1,24 @@
 import axios from "axios"
 
 export default {
-  FETCH_STORE_ACTION({ commit }) {
+  SUBMIT_RATING_ACTION({ commit }, { value }) {
+    console.log("value ", value)
     return new Promise((resolve, reject) => {
-      commit("SET_STORE_MUTATIONS", { field: "isLoading", value: true })
-      commit("SET_STORE_MUTATIONS", { field: "isError", value: false })
+      commit("SET_RATING_MUTATIONS", { field: "isLoading", value: true })
+      commit("SET_RATING_MUTATIONS", { field: "isError", value: false })
 
+      // let corsAnywhere = "https://corsanywhere.herokuapp.com"
       return axios
-        .get(
-          "https://0l89uhx5f4.execute-api.ap-southeast-1.amazonaws.com/dev/users"
+        .post(
+          `http://0l89uhx5f4.execute-api.ap-southeast-1.amazonaws.com/dev/receipts`,
+          {
+            value,
+          }
         )
         .then((res) => {
           const response = res.data
           console.log(response)
-          commit("SET_STORE_MUTATIONS", {
+          commit("SET_RATING_MUTATIONS", {
             field: "storesDetails",
             value: response,
           })
@@ -21,7 +26,7 @@ export default {
         })
         .catch((err) => {
           console.error(err)
-          commit("SET_STORE_MUTATIONS", { field: "isError", value: true })
+          commit("SET_RATING_MUTATIONS", { field: "isError", value: true })
           commit("ADD_STORE_ERRORS", { field: "error", value: err })
           reject(err)
         })
@@ -29,12 +34,6 @@ export default {
   },
 
   SET_RATING_ACTION({ commit }, { field, value }) {
-    // console.log(
-    //   "🚀 ~ file: actions.js ~ line 32 ~ SET_RATING_ACTION ~ value",
-    //   value,
-    //   field
-    // )
-
     if (field === "selectedStore") {
       commit("SET_RATING_MUTATIONS", {
         field: "selectedStore",
