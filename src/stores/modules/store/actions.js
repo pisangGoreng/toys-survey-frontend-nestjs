@@ -15,7 +15,7 @@ export default {
         process.env.VUE_APP_API_URL_PROXY
       )
       return axios
-        .get(`${process.env.VUE_APP_BASE_URL}/dev/users`)
+        .get(`${process.env.VUE_APP_BASE_URL}dev/users`)
         .then((res) => {
           const response = res.data
           commit("SET_STORE_MUTATIONS", {
