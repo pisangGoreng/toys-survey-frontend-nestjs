@@ -20,7 +20,9 @@ export default {
       )
 
       return axios
-        .get(`${process.env.VUE_APP_API_URL_PROXY}/dev/users`)
+        .get(`${process.env.VUE_APP_API_URL_PROXY}/dev/users`, {
+          credentials: true,
+        })
         .then((res) => {
           const response = res.data
           console.log(
