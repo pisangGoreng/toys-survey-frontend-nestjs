@@ -18,6 +18,10 @@ export default {
         .get(`${process.env.VUE_APP_BASE_URL}dev/users`)
         .then((res) => {
           const response = res.data
+          console.log(
+            "🚀 ~ file: actions.js ~ line 21 ~ .then ~ response",
+            response
+          )
           commit("SET_STORE_MUTATIONS", {
             field: "storesDetails",
             value: response,
