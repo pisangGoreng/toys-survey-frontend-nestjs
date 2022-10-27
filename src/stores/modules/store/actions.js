@@ -14,6 +14,11 @@ export default {
         "USE VUE_APP_API_URL_PROXY",
         process.env.VUE_APP_API_URL_PROXY
       )
+      console.log(
+        "final URL ",
+        `${process.env.VUE_APP_API_URL_PROXY}/dev/users`
+      )
+
       return axios
         .get(`${process.env.VUE_APP_API_URL_PROXY}/dev/users`)
         .then((res) => {
